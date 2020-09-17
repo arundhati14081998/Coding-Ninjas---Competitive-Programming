@@ -1,0 +1,50 @@
+Count BSTs
+Send Feedback
+Given an integer N, find and return the count of unique Binary search trees (BSTs) are possible with nodes valued from 1 to N.
+Output count can be very large, so return the count modulo 10^9+7.
+Input Format :
+Integer n 
+Output Format :
+Count of BSTs
+Contraints :
+1<= N <=1000
+Sample Input 1:
+8
+Sample Output 1:
+1430
+Sample Input 2:
+3
+Sample Output 2:
+5
+
+-----------------------
+
+# ## Read input as specified in the question.
+# ## Print output as specified in the question.
+
+#1.my solution 
+n=int(input())
+mod=1000000007
+dp=[]
+dp.append(1)
+dp.append(1)
+for i in range(2, n+1):
+    s=0
+    for k in range(1, i+1):
+        # s+=(dp[k-1]*dp[i-k])%mod                   #Dosent work
+        s=(s+(dp[k-1]*dp[i-k])%mod)%mod              #Works
+    dp.append(s)
+print(dp[n])
+
+
+#coding ninjas solution
+# n=int(input())
+# mod=1000000007
+# dp=[0]*(n+1)
+# dp[0]=1
+# dp[1]=1
+# for i in range(2, n+1):
+#     for k in range(1, i+1):
+#         dp[i]=(dp[i]+(dp[k-1]*dp[i-k])%mod)%mod
+
+# print(dp[n])
