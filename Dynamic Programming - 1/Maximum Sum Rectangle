@@ -1,0 +1,64 @@
+Maximum Sum Rectangle
+Send Feedback
+Given a 2D array, find the maximum sum rectangle in it. In other words find maximum sum over all rectangles in the matrix.
+Input
+First line contains 2 numbers n and m denoting number of rows and number of columns. Next n lines contain m space separated integers denoting elements of matrix nxm.
+Output
+Output a single integer, maximum sum rectangle.
+Constraints
+1<=n,m<=100
+Sample Input
+4 5
+1 2 -1 -4 -20
+-8 -3 4 2 1
+3 8 10 1 3
+-4 -1 1 7 -6
+Sample Output
+29
+
+----------------------------
+import sys
+def kadanes(sumarr):
+    currsum=0
+    maxsum=0
+    minval=-sys.maxsize-1
+    for i in range (len(arr)):
+        currsum+=sumarr[i]
+        if (currsum>maxsum):
+            maxsum=currsum
+        if (currsum<0):
+            currsum=0
+        minval=max(minval, sumarr[i])
+    if (minval<0):
+        return minval
+    else:
+        return maxsum
+        
+
+
+r,c =map(int, input().split())
+arr=[]
+
+for i in range(r):
+    l=[]
+    l=list(map(int, input().split()))
+    arr.append(l)
+    
+maxsum=-sys.maxsize-1   
+for left in range(c-1):
+    sumarr=[0 for i in range(r)]
+    # k=0
+    for right in range(left, c):
+        for j in range(r): 
+        	sumarr[j]+=arr[j][right]
+        maxsum=max(maxsum, kadanes(sumarr))
+        k=0
+        # print(sumarr)
+
+print(maxsum)
+        
+        
+        
+        
+        
+    
