@@ -1,0 +1,31 @@
+Min. Absolute Difference In Array
+Send Feedback
+Given an integer array A of size N, find and return the minimum absolute difference between any two elements in the array.
+We define the absolute difference between two elements ai, and aj (where i != j ) is |ai - aj|.
+Input format :
+Line 1 : Integer N, Array Size
+Line 2 : Array elements (separated by space)
+Output Format :
+Minimum difference
+Constraints :
+1 <= N <= 10^6
+Sample Input :
+5
+2 9 0 4 5
+Sample Input :
+1
+------------
+## Read input as specified in the question.
+## Print output as specified in the question.
+import sys
+
+n=int(input())
+arr=list(map(int, input().split()))
+arr.sort()
+mindiff=sys.maxsize
+for i in range(len(arr)-1):
+    diff=abs(arr[i]-arr[i+1])
+    if (diff<mindiff):
+        mindiff = diff
+print(mindiff)
+
