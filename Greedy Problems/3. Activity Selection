@@ -1,0 +1,44 @@
+Activity Selection
+Send Feedback
+You are given n activities with their start and finish times. Select the maximum number of activities that can be performed by a single person, assuming that a person can only work on a single activity at a time.
+Input
+The first line of input contains one integer denoting N.
+Next N lines contains two space separated integers denoting the start time and finish time for the ith activity.
+
+Output
+Output one integer, the maximum number of activities that can be performed
+Constraints
+1 ≤ N ≤ 10^6
+1 ≤ ai, di ≤ 10^9
+Sample Input
+6
+1 2
+3 4
+0 6
+5 7
+8 9
+5 9
+Sample Output
+4
+-------------------
+## Read input as specified in the question.
+## Print output as specified in the question.
+n=int(input())
+act=[]
+for i in range(n):
+    l=list( map(int, input().split())) 
+    act.append(l)
+act.sort(key=lambda x: int(x[1]))
+
+res=1
+lastact=0
+for i in range(1, len(act)):
+    if (act[i][0]>=act[lastact][1]):
+        lastact=i
+        res+=1
+print(res)
+
+    
+    
+    
+    
